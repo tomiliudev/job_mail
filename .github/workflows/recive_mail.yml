@@ -4,7 +4,7 @@ name: recive mail
 on:
   # スケジュールによる実行
   schedule:
-    - cron: "0 23 * * *" # 毎日朝8時に実行 (日本時間)
+    - cron: "0 * * * *" # 1時間おきに実行
   # 手動での実行
   workflow_dispatch:
 
