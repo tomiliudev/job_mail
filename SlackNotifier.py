@@ -21,17 +21,24 @@ class SlackNotifier:
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": f"==============================================\n*From:* {from_email}\n*Subject:* {subject}\n*Message ID:* {message_id}"
+                        "text": f"*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*\n*From:* {from_email}\n*Subject:* {subject}\n*Message ID:* {message_id}"
                     }
-                },
-                {
+                }
+            ]
+
+            body_split = []
+            # bodyを3000文字ごとに分割
+            for i in range(0, len(body), 3000):
+                body_split.append(body[i:i + 3000])
+
+            for i, body in enumerate(body_split):
+                blocks.append({
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
                         "text": f"{body}"
                     }
-                }
-            ]
+                })
 
             payload = {
                 "blocks": blocks
