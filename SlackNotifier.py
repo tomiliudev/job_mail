@@ -26,8 +26,8 @@ class SlackNotifier:
                 }
             ]
 
-            # bodyの中の<br />を削除
-            body = body.replace('<br />', '')
+            # bodyの中の<br />, <br/>, <br>を削除
+            body = body.replace('<br />', '').replace('<br/>', '').replace('<br>', '')
 
             body_split = []
             # bodyを3000文字ごとに分割
