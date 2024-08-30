@@ -26,6 +26,9 @@ class SlackNotifier:
                 }
             ]
 
+            # bodyの中の<br />を削除
+            body = body.replace('<br />', '')
+
             body_split = []
             # bodyを3000文字ごとに分割
             for i in range(0, len(body), 3000):
