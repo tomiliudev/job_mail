@@ -1,4 +1,5 @@
 import requests
+import re
 
 class SlackNotifier:
     def __init__(self, webhook_url):
@@ -27,7 +28,10 @@ class SlackNotifier:
             ]
 
             # bodyの中の<br />, <br/>, <br>を削除
-            body = body.replace('<br />', '').replace('<br/>', '').replace('<br>', '')
+            # body = body.replace('<br />', '').replace('<br/>', '').replace('<br>', '')
+
+            # body内のHTMLタグを削除
+            body = re.sub(r'<[^>]*?>', '', body)
 
             body_split = []
             # bodyを3000文字ごとに分割
