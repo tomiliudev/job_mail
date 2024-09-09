@@ -8,7 +8,7 @@ def main():
     yahooMail = YahooMail(my_mail, my_mail_password)
 
     email_list = []
-    domain_list = ['lassic.co.jp', 'levtech.jp']
+    domain_list = ['lassic.co.jp', 'levtech.jp', 'persol.co.jp']
     for domain in domain_list:
         emails = yahooMail.search_yahoo_mail(domain)
         if emails:
